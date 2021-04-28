@@ -1,0 +1,17 @@
+form.evento {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+form.evento div#data{
+    font-size: 15px;
+}
+
+li {
+    list-style-type: none;
+}
+
+div.evento {
+    font-size: 20px;
+}

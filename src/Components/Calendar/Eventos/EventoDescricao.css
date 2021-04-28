@@ -1,0 +1,10 @@
+div#datas {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+div#datas h1 {
+    flex: 1;
+    margin: 15px;
+}
