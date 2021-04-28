@@ -1,17 +1,36 @@
 {
   "usuarios": [
     {
-      "id": 1,
       "username": "pedro",
-      "password": "senha"
+      "password": "senha",
+      "id": 1
     },
     {
-      "id": 2,
       "username": "carlos",
-      "password": "123"
+      "password": "123",
+      "id": 2
+    },
+    {
+      "username": "guilherme",
+      "password": "deus",
+      "id": 3
+    },
+    {
+      "username": "d",
+      "password": "d",
+      "id": 4
+    },
+    {
+      "username": "pedroquinha",
+      "password": "oitudobem",
+      "id": 5
+    },
+    {
+      "username": "gui",
+      "password": "gui",
+      "id": 6
     }
   ],
-  
   "eventos": [
     {
       "id": 1,

@@ -46,18 +46,22 @@ const Calendar = () => {
             (JSON.stringify({data: day.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
           edicaoOrDescricao = true
           console.log('entrou')
-          //  for(let i = 0; i < eventos.length; i++) {
-          //   if(dataEventos[i].data == eventos[i].data) {
-          //     setEventoAux(eventoAux.data = eventos[i].data, eventoAux.info = eventos[i].info)
-          //     console.log('eventoAux: ' + eventoAux)
-          //    }
-          //}
+          showDescricao(day)
       }
         return "selected"
       } else {
           return ""
       }
     }
+
+    // const showDescricao = (day) => {
+    //   console.log('entrou2')
+    //   if( eventos.find((e) => 
+    //   (JSON.stringify({data: day.toString()}) === JSON.stringify(e))) === day) {
+    //     console.log('entrou showdescricao: ')
+    //     setEventoAux(eventos)
+    //   }
+    // }
 
     const headerCalendar = () => {
         const nextMonth = () => {
