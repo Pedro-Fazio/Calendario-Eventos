@@ -7,24 +7,20 @@ const Login = (props) => {
 
   let loginVerify = 2
 
+  //template de como deve ser a string: username:pedro,password:senha
   const entrar = () => {
-    const userData = {
-        username,
-        password
-    }
-
-    if(!username || !password) {
-        alert('Informações incorretas')
-      } else {
+    if(JSON.stringify(props.usuarios).replace(/"/g, "").includes(
+      `username:${username},password:${password}`)) {
         loginVerify = 2
         props.onLogin(loginVerify, {username, password})
+      } else if(!username || !password) {
+        alert('Por favor preencha todos os campos')
+      } else {
+        alert('Informações incorretas')
       }
 
     setUsername('')
     setPassword('')
-
-    //userData vai ser passado por uma função para o backend
-    //loginUser(userData)
   }
 
   const criarCadastro = () => {

@@ -16,24 +16,11 @@ const EventoEdicao = (props) => {
         } else {
             setEvento(titleTxt, descriptionTxt, data)
             props.onEvento(dataVerify, {titleTxt, descriptionTxt, data})
-            addEvento()
             alert('Evento criado com sucesso!')
         }
 
         setTitleTxt('')
         setDescriptionTxt('')
-    }
-
-    const addEvento = async () => {
-        const res = await fetch(
-            'http://localhost:5000/eventos', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            //colocar os dados do evento como parametro do json.stringify
-            body: JSON.stringify(evento)
-        })
     }
 
     return (

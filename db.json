@@ -1,4 +1,17 @@
 {
+  "usuarios": [
+    {
+      "id": 1,
+      "username": "pedro",
+      "password": "senha"
+    },
+    {
+      "id": 2,
+      "username": "carlos",
+      "password": "123"
+    }
+  ],
+  
   "eventos": [
     {
       "id": 1,

@@ -5,30 +5,41 @@ const Cadastro = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [usuario, setUsuario] = useState()
 
   let cadastroVerify
 
+  React.useEffect(() => {
+    console.log('usuario: ', usuario)
+
+  }, [usuario])
+
   const onSubmit = (e) => {
     e.preventDefault()
-    
-    const userData = {
-        username,
-        password
-    }
 
     if(!username || !password || !confirmPassword || password !== confirmPassword) {
       alert('Informações incorretas')
     } else {
       cadastroVerify = 1
       props.onCadastro(cadastroVerify, {username, password, confirmPassword})
+      //setUsuario(username, password)
+      //addUsuario()
     }
+
     setUsername('')
     setPassword('')
     setConfirmPassword('')
-
-    //userData vai ser passado por uma função para o backend
-    //loginUser(userData)
   }
+
+   const addUsuario = async (usuario) => {
+     const res = await fetch('http://localhost:5000/usuarios', {
+       method: 'POST',
+       headers: {
+         'Content-type': 'aplication-json'
+       },
+       body: JSON.stringify(usuario)
+     })
+   }
 
 
   return(
