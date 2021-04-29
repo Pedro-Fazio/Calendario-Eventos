@@ -5,6 +5,10 @@ const EventoDescricao = (props) => {
     const descricao = props.eventoEncontrado.info.descricao
     const data = props.eventoEncontrado.info.data
 
+    const excluir = () => {
+        props.isExcluirEvento(true)
+    }
+
     return (
             <div className='evento'>
                 <ul>
@@ -14,8 +18,8 @@ const EventoDescricao = (props) => {
                 </ul>
 
                 <ul>
-                    <li> <button> Excluir </button> </li>
-                    <li> <button> Editar </button> </li>
+                    <li> <button onClick={excluir}> Excluir </button> </li>
+                    <li> <button onClick={excluir}> Editar </button> </li>
                 </ul>
             </div>
     )

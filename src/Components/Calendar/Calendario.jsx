@@ -11,6 +11,7 @@ const Calendar = () => {
     const [data, setData] = useState()
     const [dataVerificacao, setDataVerificacao] = useState()
     const [eventos, setEventos] = useState([{data: "", info: null}])
+    const [isExcluir, setIsExcluir] = useState(false)
 
     let edicaoOrDescricao = false
     let eventoEncontrado
@@ -28,11 +29,34 @@ const Calendar = () => {
       ])
     }
 
-    const isSelecionado = (dia, dataSelecionada) => {
+    const isExcluirEvento = (value) => {
+      if(value) {
+        setIsExcluir(true)
+        console.log('chegou na funçao do pai')
+      }
+    }
+
+    const excluirEvento = (diaEvento) => {
+      eventoEncontrado = eventos.find(element => element.data.toString() === diaEvento.toString())
+      const indexEvento = eventos.indexOf(eventoEncontrado)
+
+      if (indexEvento > -1) {
+        //eventos.splice(indexEvento, 1)
+        edicaoOrDescricao = false
+        alert('Excluido/Editado')
+      }
+    }
+
+    const isSelecionado = (dia, dataSelecionada, isExcluir) => {
       if(isSameDay(dia, dataSelecionada) || (JSON.stringify(eventos)).includes(dia.toString())) {
         if(isSameDay(dia, dataSelecionada) && (JSON.stringify(eventos)).includes(dia.toString())) {
-          edicaoOrDescricao = true
-          mostrarDescricao(dia)
+          if(isExcluir) {
+            excluirEvento(dia)
+            setIsExcluir(false)
+          } else {
+            edicaoOrDescricao = true
+            mostrarDescricao(dia)
+          }
       }
         return "selected"
       } else {
@@ -114,7 +138,7 @@ const Calendar = () => {
                 className={`col cell ${
                   !isSameMonth(dia, monthStart)
                     ? "disabled"
-                    : isSelecionado(dia, dataSelecionada)
+                    : isSelecionado(dia, dataSelecionada, isExcluir)
                 }`}
                 key={dia}
                 onClick={() => {
@@ -146,7 +170,9 @@ const Calendar = () => {
             {headerCalendario()}
             {diasCalendario()}
             {celulasCalendario()}
-            {edicaoOrDescricao ? <EventoDescricao eventoEncontrado={eventoEncontrado}> </EventoDescricao> :
+            {edicaoOrDescricao ? 
+            <EventoDescricao isExcluirEvento={isExcluirEvento}
+            eventoEncontrado={eventoEncontrado}/> :
             <EventoEdicao dataVerificacao={dataVerificacao} data={data} onEvento={eventoCriado}/>}
         </div>
     )
