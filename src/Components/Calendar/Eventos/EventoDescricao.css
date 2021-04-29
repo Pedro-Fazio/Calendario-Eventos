@@ -1,10 +1,9 @@
-div#datas {
+div.evento {
     display: flex;
-    flex-direction: row;
-    text-align: center;
+    flex-direction: column;
 }
 
-div#datas h1 {
-    flex: 1;
-    margin: 15px;
+li {
+    list-style-type: none;
+    font-size: 35px;
 }

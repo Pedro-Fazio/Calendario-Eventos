@@ -12,9 +12,9 @@ const Calendar = () => {
     const [dataTxt, setDataTxt] = useState()
     const [dataEventos, setDataEventos] = useState([{data: "", isEvento: null}])
     const [eventos, setEventos] = useState([{data: "", info: null}])
-    const [eventoAux, setEventoAux] = useState({data: "", info: null})
 
     let edicaoOrDescricao = false
+    let eventoEncontrado
 
     React.useEffect(() => {
       console.log('dataEventos: ', dataEventos)
@@ -54,14 +54,9 @@ const Calendar = () => {
       }
     }
 
-    // const showDescricao = (day) => {
-    //   console.log('entrou2')
-    //   if( eventos.find((e) => 
-    //   (JSON.stringify({data: day.toString()}) === JSON.stringify(e))) === day) {
-    //     console.log('entrou showdescricao: ')
-    //     setEventoAux(eventos)
-    //   }
-    // }
+    const showDescricao = (day) => {
+      eventoEncontrado = eventos.find(element => element.data.toString() === day.toString())
+    }
 
     const headerCalendar = () => {
         const nextMonth = () => {
@@ -158,13 +153,12 @@ const Calendar = () => {
       }
 
 
-
     return (
         <div className="calendar">
             {headerCalendar()}
             {days()}
             {cells()}
-            {edicaoOrDescricao ? <EventoDescricao> </EventoDescricao> :
+            {edicaoOrDescricao ? <EventoDescricao eventoEncontrado={eventoEncontrado}> </EventoDescricao> :
             <EventoEdicao dataTxt={dataTxt} data={data} onEvento={eventoCriado}/>}
         </div>
     )

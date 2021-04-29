@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './EventoEdicao.css'
 
 const EventoEdicao = (props) => {
-    const [titleTxt, setTitleTxt] = useState('')
-    const [descriptionTxt, setDescriptionTxt] = useState('')
+    const [titulo, settitulo] = useState('')
+    const [descricao, setdescricao] = useState('')
     const [evento, setEvento] = useState([])
     let data = props.data
     let dataVerify = props.dataTxt
@@ -11,28 +11,28 @@ const EventoEdicao = (props) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if(!titleTxt || !descriptionTxt) {
+        if(!titulo || !descricao) {
             alert('Por favor, preencha todos os campos')
         } else {
-            setEvento(titleTxt, descriptionTxt, data)
-            props.onEvento(dataVerify, {titleTxt, descriptionTxt, data})
+            setEvento(titulo, descricao, data)
+            props.onEvento(dataVerify, {titulo, descricao, data})
             alert('Evento criado com sucesso!')
         }
 
-        setTitleTxt('')
-        setDescriptionTxt('')
+        settitulo('')
+        setdescricao('')
     }
 
     return (
          <form className='evento' onSubmit={onSubmit}>
              <div id='titulo-evento'>
                  <label> Digite o título do evento </label>
-                 <input type="text" value={titleTxt} onChange={e => setTitleTxt(e.target.value)}/>
+                 <input type="text" value={titulo} onChange={e => settitulo(e.target.value)}/>
              </div>
 
              <div id='descricao-evento'>
                  <label> Digite a descrição do evento </label> 
-                 <input type="text" value={descriptionTxt} onChange={e => setDescriptionTxt(e.target.value)}/>
+                 <input type="text" value={descricao} onChange={e => setdescricao(e.target.value)}/>
              </div>
 
              <div id='datas-evento'>
