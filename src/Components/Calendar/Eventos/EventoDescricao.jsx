@@ -1,20 +1,9 @@
 import './EventoDescricao.css'
 
 const EventoDescricao = (props) => {
-    // const [titulo, setTitulo] = useState()
-    // const [descricao, setDescricao] = useState()
-    // const [data, setData] = useState()
-
-    // setTitulo(props.eventoEncontrado.titulo)
-    // setDescricao(props.eventoEncontrado.descricao)
-    // setData(props.eventoEncontrado.data)
-
     const titulo = props.eventoEncontrado.info.titulo
     const descricao = props.eventoEncontrado.info.descricao
     const data = props.eventoEncontrado.info.data
-
-    console.log('props descricao: ', props.eventoEncontrado.info.data)
-
 
     return (
             <div className='evento'>

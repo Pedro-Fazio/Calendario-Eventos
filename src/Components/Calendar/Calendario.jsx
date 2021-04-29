@@ -6,10 +6,10 @@ import {subMonths, addMonths, addDays, isSameDay, format, startOfWeek, startOfMo
   endOfMonth, endOfWeek, isSameMonth} from "date-fns"
 
 const Calendar = () => {
-    const [currentMonth, setCurrentMonth] = useState (new Date())
-    const [selectedDate, setSelectedDate] = useState(new Date())
+    const [mesAtual, setMesAtual] = useState (new Date())
+    const [dataSelecionada, setDataSelecionada] = useState(new Date())
     const [data, setData] = useState()
-    const [dataTxt, setDataTxt] = useState()
+    const [dataVerificacao, setDataVerificacao] = useState()
     const [dataEventos, setDataEventos] = useState([{data: "", isEvento: null}])
     const [eventos, setEventos] = useState([{data: "", info: null}])
 
@@ -22,31 +22,30 @@ const Calendar = () => {
 
     }, [dataEventos, eventos])
 
-    const eventoCriado = (dataVerify, infoEvento) => {
+    const eventoCriado = (dataVerificacao, infoEvento) => {
       setEventos([...eventos, {
-          data: dataVerify,
+          data: dataVerificacao,
           info: infoEvento
         }
       ])
 
        setDataEventos([...dataEventos, {
-          data: dataVerify,
+          data: dataVerificacao,
           isEvento: true
         }
       ])
 
     }
 
-    const isSelected = (day, selectedDate) => {
-      if(isSameDay(day, selectedDate) ||
+    const isSelected = (dia, dataSelecionada) => {
+      if(isSameDay(dia, dataSelecionada) ||
         dataEventos.find((e) => 
-          (JSON.stringify({data: day.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
-        if(isSameDay(day, selectedDate) &&
+          (JSON.stringify({data: dia.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
+        if(isSameDay(dia, dataSelecionada) &&
           dataEventos.find((e) =>
-            (JSON.stringify({data: day.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
+            (JSON.stringify({data: dia.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
           edicaoOrDescricao = true
-          console.log('entrou')
-          showDescricao(day)
+          mostrarDescricao(dia)
       }
         return "selected"
       } else {
@@ -54,17 +53,17 @@ const Calendar = () => {
       }
     }
 
-    const showDescricao = (day) => {
-      eventoEncontrado = eventos.find(element => element.data.toString() === day.toString())
+    const mostrarDescricao = (dia) => {
+      eventoEncontrado = eventos.find(element => element.data.toString() === dia.toString())
     }
 
-    const headerCalendar = () => {
+    const headerCalendario = () => {
         const nextMonth = () => {
-            setCurrentMonth(addMonths(currentMonth, 1))
+            setMesAtual(addMonths(mesAtual, 1))
           }
     
         const prevMonth = () => {
-            setCurrentMonth(subMonths(currentMonth, 1))
+            setMesAtual(subMonths(mesAtual, 1))
           }
     
         return (
@@ -75,7 +74,7 @@ const Calendar = () => {
               </div>
             </div>
             <div className="col col-center">
-              <span>{format(currentMonth, 'MMMM yyyy')}</span>
+              <span>{format(mesAtual, 'MMMM yyyy')}</span>
             </div>
             <div className="col col-end" onClick={nextMonth}>
               <div className="icon"> chevron_right </div>
@@ -84,70 +83,70 @@ const Calendar = () => {
         )
     }
 
-    const days = () => {
-        const days = []
+    const diasCalendario = () => {
+        const dias = []
     
-        let startDate = startOfWeek(currentMonth)
+        let diaInicio = startOfWeek(mesAtual)
     
         for (let i = 0; i < 7; i++) {
-          days.push(
+          dias.push(
             <div className="col col-center" key={i}>
-              {format(addDays(startDate, i), "ddd")}
+              {format(addDays(diaInicio, i), "ddd")}
             </div>
           )
         }
     
-        return <div className="days row">{days}</div>
+        return <div className="days row">{dias}</div>
       }
 
-      const cells = () => {
-        const onDateClick = (day) => {
-          console.log(day)
-          setData(format(day, "dd/MM/y"))
-          setDataTxt(day.toString())
-          setSelectedDate(day)
+      const celulasCalendario = () => {
+        const onDateClick = (dia) => {
+          console.log(dia)
+          setData(format(dia, "dd/MM/y"))
+          setDataVerificacao(dia.toString())
+          setDataSelecionada(dia)
         }
 
-        const monthStart = startOfMonth(currentMonth)
+        const monthStart = startOfMonth(mesAtual)
         const monthEnd = endOfMonth(monthStart)
-        const startDate = startOfWeek(monthStart)
+        const diaInicio = startOfWeek(monthStart)
         const endDate = endOfWeek(monthEnd)
     
         const rows = []
     
-        let days = []
-        let day = startDate
+        let dias = []
+        let dia = diaInicio
         let formattedDate = ""
 
-        while (day <= endDate) {
+        while (dia <= endDate) {
           for (let i = 0; i < 7; i++) {
-            formattedDate = format(day, "d")
-            const cloneDay = day
-            days.push(
+            formattedDate = format(dia, "d")
+            const cloneDia = dia
+            dias.push(
               <div
                 className={`col cell ${
-                  !isSameMonth(day, monthStart)
+                  !isSameMonth(dia, monthStart)
                     ? "disabled"
-                    : isSelected(day, selectedDate)
+                    : isSelected(dia, dataSelecionada)
                 }`}
-                key={day}
+                key={dia}
                 onClick={() => {
                                 return (
-                                  onDateClick(cloneDay)                              
+                                  onDateClick(cloneDia)                              
                                 )}}
               >
                 <span className="number">{formattedDate}</span>
                 <span className="bg">{formattedDate}</span>
               </div>
             )
-            day = addDays(day, 1)
+            dia = addDays(dia, 1)
           }
           rows.push(
-            <div className="row" key={day}>
-              {days}
+            <div className="row" key={dia}>
+              {dias}
             </div>
           )
-          days = []
+          dias = []
         }
         return <div className="body">{rows}</div>
       }
@@ -155,11 +154,11 @@ const Calendar = () => {
 
     return (
         <div className="calendar">
-            {headerCalendar()}
-            {days()}
-            {cells()}
+            {headerCalendario()}
+            {diasCalendario()}
+            {celulasCalendario()}
             {edicaoOrDescricao ? <EventoDescricao eventoEncontrado={eventoEncontrado}> </EventoDescricao> :
-            <EventoEdicao dataTxt={dataTxt} data={data} onEvento={eventoCriado}/>}
+            <EventoEdicao dataVerificacao={dataVerificacao} data={data} onEvento={eventoCriado}/>}
         </div>
     )
 }
