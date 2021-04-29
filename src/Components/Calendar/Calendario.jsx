@@ -10,17 +10,15 @@ const Calendar = () => {
     const [dataSelecionada, setDataSelecionada] = useState(new Date())
     const [data, setData] = useState()
     const [dataVerificacao, setDataVerificacao] = useState()
-    const [dataEventos, setDataEventos] = useState([{data: "", isEvento: null}])
     const [eventos, setEventos] = useState([{data: "", info: null}])
 
     let edicaoOrDescricao = false
     let eventoEncontrado
 
     useEffect(() => {
-      console.log('dataEventos: ', dataEventos)
       console.log('eventos: ', eventos)
 
-    }, [dataEventos, eventos])
+    }, [eventos])
 
     const eventoCriado = (dataVerificacao, infoEvento) => {
       setEventos([...eventos, {
@@ -28,22 +26,11 @@ const Calendar = () => {
           info: infoEvento
         }
       ])
-
-       setDataEventos([...dataEventos, {
-          data: dataVerificacao,
-          isEvento: true
-        }
-      ])
-
     }
 
-    const isSelected = (dia, dataSelecionada) => {
-      if(isSameDay(dia, dataSelecionada) ||
-        dataEventos.find((e) => 
-          (JSON.stringify({data: dia.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
-        if(isSameDay(dia, dataSelecionada) &&
-          dataEventos.find((e) =>
-            (JSON.stringify({data: dia.toString(), isEvento: true}) === JSON.stringify(e))) !== undefined) {
+    const isSelecionado = (dia, dataSelecionada) => {
+      if(isSameDay(dia, dataSelecionada) || (JSON.stringify(eventos)).includes(dia.toString())) {
+        if(isSameDay(dia, dataSelecionada) && (JSON.stringify(eventos)).includes(dia.toString())) {
           edicaoOrDescricao = true
           mostrarDescricao(dia)
       }
@@ -127,7 +114,7 @@ const Calendar = () => {
                 className={`col cell ${
                   !isSameMonth(dia, monthStart)
                     ? "disabled"
-                    : isSelected(dia, dataSelecionada)
+                    : isSelecionado(dia, dataSelecionada)
                 }`}
                 key={dia}
                 onClick={() => {
@@ -148,6 +135,8 @@ const Calendar = () => {
           )
           dias = []
         }
+        console.log('eventoss: ', eventos)
+        console.log('-------------------------------')
         return <div className="body">{rows}</div>
       }
 
