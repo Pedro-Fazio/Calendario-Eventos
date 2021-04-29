@@ -1,4 +1,4 @@
-import './Calendar.css'
+import './Calendario.css'
 import React, { useEffect, useState } from "react"
 import EventoEdicao from './Eventos/EventoEdicao.jsx'
 import EventoDescricao from './Eventos/EventoDescricao'
@@ -16,7 +16,7 @@ const Calendar = () => {
     let edicaoOrDescricao = false
     let eventoEncontrado
 
-    React.useEffect(() => {
+    useEffect(() => {
       console.log('dataEventos: ', dataEventos)
       console.log('eventos: ', eventos)
 

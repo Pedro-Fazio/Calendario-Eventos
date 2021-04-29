@@ -2,28 +2,27 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Cadastro = (props) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [usuarioNome, setUsuarioNome] = useState('')
+  const [usuarioSenha, setUsuarioSenha] = useState('')
+  const [confirmarSenha, setConfirmarSenha] = useState('')
 
   let usuario
 
   const cadastro = () => {
-    if(!username || !password || !confirmPassword || password !== confirmPassword) {
+    if(!usuarioNome || !usuarioSenha || !confirmarSenha || usuarioSenha !== confirmarSenha) {
       alert('Informações incorretas')
     } else {
-      usuario = {username, password}
+      usuario = {usuarioNome, usuarioSenha}
       addUsuario(usuario)
       alert('Usuário cadastrado com sucesso!')
     }
 
-    setUsername('')
-    setPassword('')
-    setConfirmPassword('')
+    setUsuarioNome('')
+    setUsuarioSenha('')
+    setConfirmarSenha('')
   }
 
     const addUsuario = async (usuario) => {
-      console.log('entrouaddusuario: ', usuario)
       const res = await fetch('http://localhost:5000/usuarios/', {
         method: 'POST',
         headers: {
@@ -40,20 +39,20 @@ const Cadastro = (props) => {
       <form>
         <label>
           <p> Nome </p>
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
+          <input type="text" value={usuarioNome} onChange={e => setUsuarioNome(e.target.value)}/>
         </label>
         <label>
           <p> Senha </p>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <input type="password" value={usuarioSenha} onChange={e => setUsuarioSenha(e.target.value)}/>
         </label>
         <label>
           <p> Confirmar senha </p>
-          <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+          <input type="password" value={confirmarSenha} onChange={e => setConfirmarSenha(e.target.value)}/>
         </label>
-        <div>
-          <button type="button" onClick={(e) =>
-          props.onCadastro(1, {username, password, confirmPassword})}> Login </button>
+        <div id="button">
           <button type="button" onClick={cadastro}> Realizar Cadastro </button>
+          <button type="button" onClick={(e) =>
+          props.cadastro(1)}> Voltar para tela Login </button>
         </div>
       </form>
     </div>

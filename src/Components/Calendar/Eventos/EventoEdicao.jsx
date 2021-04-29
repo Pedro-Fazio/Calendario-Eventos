@@ -4,7 +4,6 @@ import './EventoEdicao.css'
 const EventoEdicao = (props) => {
     const [titulo, settitulo] = useState('')
     const [descricao, setdescricao] = useState('')
-    const [evento, setEvento] = useState([])
     let data = props.data
     let dataVerify = props.dataTxt
 
@@ -14,7 +13,6 @@ const EventoEdicao = (props) => {
         if(!titulo || !descricao) {
             alert('Por favor, preencha todos os campos')
         } else {
-            setEvento(titulo, descricao, data)
             props.onEvento(dataVerify, {titulo, descricao, data})
             alert('Evento criado com sucesso!')
         }

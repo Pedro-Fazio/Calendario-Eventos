@@ -1,5 +1,4 @@
 import './EventoDescricao.css'
-import {useState} from "react"
 
 const EventoDescricao = (props) => {
     // const [titulo, setTitulo] = useState()

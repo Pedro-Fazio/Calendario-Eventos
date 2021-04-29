@@ -12,3 +12,8 @@ div button {
 div#logado {
     font-size: 40px;
 }
+
+div#button {
+    display: flex;
+    flex-direction: column;
+}

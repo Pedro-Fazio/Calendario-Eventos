@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Login.css';
 
 const Logado = (props) => {
-  React.useEffect(() => {
-    props.showCalendario()
-  }, [])
 
   return(
     <div id='logado'>

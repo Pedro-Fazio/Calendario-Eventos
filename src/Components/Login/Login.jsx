@@ -2,30 +2,31 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Login = (props) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [usuarioNome, setUsuarioNome] = useState('')
+  const [usuarioSenha, setUsuarioSenha] = useState('')
 
-  let loginVerify = 2
+  let loginVerificacao = 2
 
-  //template de como deve ser a string: username:pedro,password:senha
   const entrar = () => {
-    if(JSON.stringify(props.usuarios).replace(/"/g, "").includes(
-      `username:${username},password:${password}`)) {
-        loginVerify = 2
-        props.onLogin(loginVerify, {username, password})
-      } else if(!username || !password) {
+    if(JSON.stringify(props.usuarios).replace(/"/g, "").includes(`${usuarioNome}`) 
+      &&
+      JSON.stringify(props.usuarios).replace(/"/g, "").includes(`${usuarioSenha}`)  ) {
+        console.log('usuarios: ', props.usuarios)
+        loginVerificacao = 2
+        props.login(loginVerificacao, {usuarioNome, usuarioSenha})
+      } else if(!usuarioNome || !usuarioSenha) {
         alert('Por favor preencha todos os campos')
       } else {
         alert('Informações incorretas')
       }
 
-    setUsername('')
-    setPassword('')
+    setUsuarioNome('')
+    setUsuarioSenha('')
   }
 
   const criarCadastro = () => {
-      loginVerify = 0
-      props.onLogin(loginVerify, {username, password})
+      loginVerificacao = 0
+      props.login(loginVerificacao)
   }
 
   return(
@@ -34,11 +35,11 @@ const Login = (props) => {
       <form>
         <label>
           <p> Nome </p>
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
+          <input type="text" value={usuarioNome} onChange={e => setUsuarioNome(e.target.value)}/>
         </label>
         <label>
           <p>Senha</p>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <input type="password" value={usuarioSenha} onChange={e => setUsuarioSenha(e.target.value)}/>
         </label>
         <div>
           <button type="button" onClick={entrar}> Entrar </button>

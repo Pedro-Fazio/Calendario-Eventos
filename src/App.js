@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
-import Calendar from './Components/Calendar/Calendar.jsx'
+import Calendario from './Components/Calendar/Calendario.jsx'
 import Login from './Components/Login/Login'
 import Cadastro from './Components/Login/Cadastro'
 import Logado from './Components/Login/Logado'
 
 const App = () => {
-  const [estadoLoginVerify, setEstadoLoginVerify] = useState(1)
-  const [eventos, setEventos] = useState([])
-  const [showCalendar, setShowCalendar] = useState(false)
+  const [estadoLogin, setEstadoLogin] = useState(1)
+  const [mostrarCalendario, setMostrarCalendario] = useState(false)
   const [usuarios, setUsuarios] = useState([])
   const [nomeUsuario, setNomeUsuario] = useState()
 
@@ -31,40 +30,41 @@ const App = () => {
   }
   
 
-  const showCalendario = () => {
-    setShowCalendar(true)
+  const alteraCalendario = () => {
+    setMostrarCalendario(true)
   }
+  
 
-  const estadoLogin = () => {
-    if(estadoLoginVerify == 0) {
-      return <Cadastro onCadastro={cadastro}/>
-    } else if(estadoLoginVerify == 1) {
-      return <Login usuarios={usuarios} onLogin={login}/>
-    } else if(estadoLoginVerify == 2) {
-      return <Logado nomeUsuario={JSON.stringify(nomeUsuario)} showCalendario={showCalendario}/>
+  const estadoLoginVerificacao = () => {
+    if(estadoLogin === 0) {
+      return <Cadastro cadastro={cadastro}/>
+    } else if(estadoLogin === 1) {
+      return <Login usuarios={usuarios} login={login}/>
+    } else if(estadoLogin === 2) {
+      return <Logado nomeUsuario={nomeUsuario}/>
     }
   }
 
-  const cadastro = (cadastroVerify, infoCadastro) => {
-    if(cadastroVerify == 1) {
-      setEstadoLoginVerify(1)
-      console.log(infoCadastro)
+  const cadastro = (cadastroVerificacao) => {
+    if(cadastroVerificacao === 1) {
+      setEstadoLogin(1)
     }
   }
 
-  const login = (loginVerify, infoLogin) => {
-    if(loginVerify == 0) {
-      setEstadoLoginVerify(0)
-    } else if(loginVerify == 2) {
-      setNomeUsuario(infoLogin.username)
-      setEstadoLoginVerify(2)
+  const login = (loginVerificacao, infoLogin) => {
+    if(loginVerificacao === 0) {
+      setEstadoLogin(0)
+    } else if(loginVerificacao === 2) {
+      setNomeUsuario(infoLogin.usuarioNome)
+      setEstadoLogin(2)
+      alteraCalendario()
     }
   }
   
   return (
     <div className='App'>
-      {estadoLogin()}
-      {showCalendar && <Calendar />}
+      {estadoLoginVerificacao()}
+      {mostrarCalendario && <Calendario />}
     </div>
   );
 }
