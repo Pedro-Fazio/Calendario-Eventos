@@ -15,6 +15,7 @@ const Calendar = () => {
 
     let edicaoOrDescricao = false
     let eventoEncontrado
+    //let isExcluir = false
 
     useEffect(() => {
       console.log('eventos: ', eventos)
@@ -32,6 +33,7 @@ const Calendar = () => {
     const isExcluirEvento = (value) => {
       if(value) {
         setIsExcluir(true)
+        //isExcluir = true
       }
     }
 
@@ -39,19 +41,23 @@ const Calendar = () => {
       eventoEncontrado = eventos.find(element => element.data.toString() === diaEvento.toString())
       const indexEvento = eventos.indexOf(eventoEncontrado)
 
+      setIsExcluir(false)
+
       if (indexEvento > -1) {
+        //setIsExcluir(false)
         eventos.splice(indexEvento, 1)
         edicaoOrDescricao = false
         alert('Excluido/Editado')
       }
     }
 
-    const isSelecionado = (dia, dataSelecionada, isExcluir) => {
+    const isSelecionado = (dia, dataSelecionada) => {
       if(isSameDay(dia, dataSelecionada) || (JSON.stringify(eventos)).includes(dia.toString())) {
         if(isSameDay(dia, dataSelecionada) && (JSON.stringify(eventos)).includes(dia.toString())) {
           if(isExcluir) {
             excluirEvento(dia)
-            setIsExcluir(false)
+            //setIsExcluir(false)
+            //isExcluir = false
           } else {
             edicaoOrDescricao = true
             mostrarDescricao(dia)
@@ -111,6 +117,7 @@ const Calendar = () => {
 
       const celulasCalendario = () => {
         const onDateClick = (dia) => {
+          setIsExcluir(false)
           //console.log(dia)
           setData(format(dia, "dd/MM/y"))
           setDataVerificacao(dia.toString())
@@ -160,7 +167,6 @@ const Calendar = () => {
         }
         return <div className="body">{rows}</div>
       }
-
 
     return (
         <div className="calendar">

@@ -48,7 +48,6 @@ npm start
 Por enquanto esse projeto conta com duas funcionalidades pendentes, sendo elas:
 
 - Toda a questão de gerenciamento de eventos ainda não possui um Backend para dar suporte aos eventos
-- Quando é realizado a exclusão ou edição de eventos, o primeiro evento é excluído/editado com sucesso, porém o script acaba excluindo quaisquer outros eventos que o usuário for clicando.
 
 ## Testando a aplicação
 
@@ -80,7 +79,7 @@ Por enquanto esse projeto conta com duas funcionalidades pendentes, sendo elas:
 
 ![alt text](https://i.imgur.com/lsgP1Sf.png)
 
-- Atualmente, ao clicar em **Excluir** ou **Editar**, a operação clicada é realizada corretamente com o primeiro evento, porém ao clicar em outros eventos já criados ele apenas vai exclui-los. Esse bug será concertado em breve, assim será possível excluir/editar qualquer evento corretamente
+- Ao clicar em **Excluir** ou **Editar**, o evento é excluído/editado, sendo possível escrever um novo evento em seu lugar ou apenas deixar a data sem evento algum
 
 ![alt text](https://i.imgur.com/v30h8BA.png)
 
