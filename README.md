@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Calendário de Eventos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Informações básicas do projeto
+- O projeto todo foi desenvolvido com auxílio do framework React e Javascript/HTML/CSS.
+- O editor escolhido para desenvolve-lo é o Visual Studio Code
+- Conta com um Backend local (json server)
 
-## Available Scripts
+## Descrição
+Esse projeto foi realizado para um processo seletivo da Tokenlab. É uma solução com Frontend e Backend para o registro de eventos em um calendário, também possuindo funcionalidades de login para o usuário.
 
-In the project directory, you can run:
+**Na parte do login de usuários, temos as funcionalidades:**
+- [Login]
+- [Cadastro de usuário]
 
-### `yarn start`
+O setor de login foi feito utilizando um servidor json para realizar um Backend local que salva os usuários cadastrados no ```db.json```, e quando for feito o login ele verifica com esses dados do backend para autorizar ou não o login do usuário. Após feito o login, o usuário terá o acesso permitido para utilizar a tela do calendário
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Agora falando mais da parte de eventos localizada na tela do calendário, temos as funcionalidades:**
+- [Adição de eventos]
+- [Edição de eventos]
+- [Remoção de eventos]
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+O setor de eventos não foi utilizado Backend para dar suporte ao Frontend até o momento, sendo assim, os dados estão sendo salvos nas próprias variaveis instanciadas ao carregar a página. Essa tela de calendário será onde o usuário poderá criar seus eventos nas datas que escolher e ver as informações dos eventos marcados quando quiser, também será possível editar ou excluir qualquer evento existente
 
-### `yarn test`
+## Como iniciar o projeto
+Para iniciar o projeto é preciso ter o Node instalado pois usaremos suas funcionalidades relacionadas ao npm. É possivel instala-lo através desse link: **https://nodejs.org/pt-br/download/**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após instalar Node, é preciso instalar o npm, para isso rode:
+```sh
+npm install
+```
+Agora é preciso do json-server para rodar o Backend, e para isso será usado uma funcionalidade do próprio npm, portanto rode:
+```sh
+npm install json-server
+```
 
-### `yarn build`
+Tendo o npm na versão e json-server instalado, rode o seguinte comando em um terminal para iniciar o Backend:
+```sh
+npm run server
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+E esse outro comando para inicar o Frontend em outro terminal:
+```sh
+npm start
+```
+**Agora sim esta tudo setado para utilizar a aplicação**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Funcionalidades pendentes
+Por enquanto esse projeto conta com duas funcionalidades pendentes, sendo elas:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Toda a questão de gerenciamento de eventos ainda não possui um Backend para dar suporte aos eventos
+- Quando é realizado a exclusão ou edição de eventos, o primeiro evento é excluído/editado com sucesso, porém o script acaba excluindo quaisquer outros eventos que o usuário for clicando.
 
-### `yarn eject`
+## Testando a aplicação
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Essa é a tela inicial da aplicação, ela não aparecerá as informações do calendário enquanto o usuário não estiver logado, então para isso criaremos um novo cadastro
+![alt text](https://i.imgur.com/GW30t7I.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Escrevi um usuário teste contendo o username como "usuario" e senha como "senha123", agora basta realizar o cadastro
+![alt text](https://i.imgur.com/7xdZ20l.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Feito o cadastro, voltaremos para a tela de login
+![alt text](https://i.imgur.com/cMNbz7Y.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Colocando o mesmo username e senha que acabou de ser cadastrado é possível realizar o login para interagir com o calendário
+![alt text](https://i.imgur.com/rZECCoH.png)
 
-## Learn More
+- Aqui temos um calendário contendo todas as funcionalidades de um calendário comum, então vamos criar um evento clicando em qualquer data desejada
+![alt text](https://i.imgur.com/KXDibmB.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- E agora escrever as informações do evento para cria-lo na data selecionada
+![alt text](https://i.imgur.com/8l2Ju2B.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Prontinho, agora o evento está criado. Sendo também possível criar mais eventos em diferentes datas apenas repetindo o mesmo processo de criação
+![alt text](https://i.imgur.com/lsgP1Sf.png)
 
-### Code Splitting
+- Atualmente, ao clicar em **Excluir** ou **Editar**, a operação clicada é realizada corretamente com o primeiro evento, porém ao clicar em outros eventos já criados ele apenas vai exclui-los. Esse bug será concertado em breve, assim será possível excluir/editar qualquer evento corretamente
+![alt text](https://i.imgur.com/v30h8BA.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
