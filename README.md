@@ -85,4 +85,4 @@ Por enquanto esse projeto conta com duas funcionalidades pendentes, sendo elas:
 ![alt text](https://i.imgur.com/v30h8BA.png)
 
 ## Finalidade do projeto
-**Esse projeto foi realizado para o processo seletivo de desenvolvedor web da Tokenlab**
+**Esse projeto foi realizado para o processo seletivo de desenvolvedor web da Tokenlab (https://www.tokenlab.com.br/pt/)**
