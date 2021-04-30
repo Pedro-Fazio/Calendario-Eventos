@@ -6,7 +6,7 @@
 - Conta com um Backend local (json server)
 
 ## Descrição
-Esse projeto foi realizado para um processo seletivo da Tokenlab. É uma solução com Frontend e Backend para o registro de eventos em um calendário, também possuindo funcionalidades de login para o usuário.
+Esse projeto é uma solução com Frontend e Backend para o registro de eventos em um calendário, também possuindo funcionalidades de login para o usuário.
 
 **Na parte do login de usuários, temos as funcionalidades:**
 - [Login]
@@ -84,3 +84,5 @@ Por enquanto esse projeto conta com duas funcionalidades pendentes, sendo elas:
 
 ![alt text](https://i.imgur.com/v30h8BA.png)
 
+## Finalidade do projeto
+**Esse projeto foi realizado para o processo seletivo de desenvolvedor web da Tokenlab**
