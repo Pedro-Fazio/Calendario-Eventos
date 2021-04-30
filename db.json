@@ -19,6 +19,11 @@
       "usuarioNome": "pessoa",
       "usuarioSenha": "vd",
       "id": 4
+    },
+    {
+      "usuarioNome": "guilherme",
+      "usuarioSenha": "senha123",
+      "id": 5
     }
   ],
   "eventos": [

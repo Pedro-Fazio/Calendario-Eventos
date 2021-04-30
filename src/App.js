@@ -15,7 +15,7 @@ const App = () => {
     const getUsuarios = async () => {
       const usuariosServidor = await fetchUsuarios()
       setUsuarios(usuariosServidor)
-      console.log(usuariosServidor)
+      //console.log(usuariosServidor)
     }
 
     getUsuarios()

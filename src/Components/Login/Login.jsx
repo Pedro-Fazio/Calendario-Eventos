@@ -6,9 +6,6 @@ const Login = (props) => {
   const [usuarioSenha, setUsuarioSenha] = useState('')
 
   let loginVerificacao = 2
-  let usuario = usuarioNome
-  let senha = usuarioSenha
-  
 
   const entrar = () => {
     if(!usuarioNome || !usuarioSenha) {
@@ -16,7 +13,6 @@ const Login = (props) => {
     } else if(JSON.stringify(props.usuarios).replace(/"/g, "").includes(`${usuarioNome}`) 
       &&
       JSON.stringify(props.usuarios).replace(/"/g, "").includes(`${usuarioSenha}`)  ) {
-        console.log('usuarios: ', props.usuarios)
         loginVerificacao = 2
         props.login(loginVerificacao, {usuarioNome, usuarioSenha})
       } else {

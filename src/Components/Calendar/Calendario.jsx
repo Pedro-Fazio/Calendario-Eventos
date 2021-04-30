@@ -32,7 +32,6 @@ const Calendar = () => {
     const isExcluirEvento = (value) => {
       if(value) {
         setIsExcluir(true)
-        console.log('chegou na funçao do pai')
       }
     }
 
@@ -41,7 +40,7 @@ const Calendar = () => {
       const indexEvento = eventos.indexOf(eventoEncontrado)
 
       if (indexEvento > -1) {
-        //eventos.splice(indexEvento, 1)
+        eventos.splice(indexEvento, 1)
         edicaoOrDescricao = false
         alert('Excluido/Editado')
       }
@@ -112,7 +111,7 @@ const Calendar = () => {
 
       const celulasCalendario = () => {
         const onDateClick = (dia) => {
-          console.log(dia)
+          //console.log(dia)
           setData(format(dia, "dd/MM/y"))
           setDataVerificacao(dia.toString())
           setDataSelecionada(dia)
@@ -159,8 +158,6 @@ const Calendar = () => {
           )
           dias = []
         }
-        console.log('eventoss: ', eventos)
-        console.log('-------------------------------')
         return <div className="body">{rows}</div>
       }
 
