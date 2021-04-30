@@ -53,26 +53,34 @@ Por enquanto esse projeto conta com duas funcionalidades pendentes, sendo elas:
 ## Testando a aplicação
 
 - Essa é a tela inicial da aplicação, ela não aparecerá as informações do calendário enquanto o usuário não estiver logado, então para isso criaremos um novo cadastro
+
 ![alt text](https://i.imgur.com/GW30t7I.png)
 
 - Escrevi um usuário teste contendo o username como "usuario" e senha como "senha123", agora basta realizar o cadastro
+
 ![alt text](https://i.imgur.com/7xdZ20l.png)
 
 - Feito o cadastro, voltaremos para a tela de login
+
 ![alt text](https://i.imgur.com/cMNbz7Y.png)
 
 - Colocando o mesmo username e senha que acabou de ser cadastrado é possível realizar o login para interagir com o calendário
+
 ![alt text](https://i.imgur.com/rZECCoH.png)
 
 - Aqui temos um calendário contendo todas as funcionalidades de um calendário comum, então vamos criar um evento clicando em qualquer data desejada
+
 ![alt text](https://i.imgur.com/KXDibmB.png)
 
 - E agora escrever as informações do evento para cria-lo na data selecionada
+
 ![alt text](https://i.imgur.com/8l2Ju2B.png)
 
 - Prontinho, agora o evento está criado. Sendo também possível criar mais eventos em diferentes datas apenas repetindo o mesmo processo de criação
+
 ![alt text](https://i.imgur.com/lsgP1Sf.png)
 
 - Atualmente, ao clicar em **Excluir** ou **Editar**, a operação clicada é realizada corretamente com o primeiro evento, porém ao clicar em outros eventos já criados ele apenas vai exclui-los. Esse bug será concertado em breve, assim será possível excluir/editar qualquer evento corretamente
+
 ![alt text](https://i.imgur.com/v30h8BA.png)
 
