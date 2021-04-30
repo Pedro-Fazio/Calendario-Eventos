@@ -22,8 +22,13 @@
     },
     {
       "usuarioNome": "usuario",
-      "usuarioSenha": "senha123",
+      "usuarioSenha": "123",
       "id": 5
+    },
+    {
+      "usuarioNome": "e",
+      "usuarioSenha": "e",
+      "id": 6
     }
   ],
   "eventos": [

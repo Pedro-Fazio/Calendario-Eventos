@@ -24,6 +24,8 @@ O setor de eventos não foi utilizado Backend para dar suporte ao Frontend até 
 ## Como iniciar o projeto
 Para iniciar o projeto é preciso ter o Node instalado pois usaremos suas funcionalidades relacionadas ao npm. É possivel instala-lo através desse link: **https://nodejs.org/pt-br/download/**
 
+Também é preciso ter o React instalado: **https://react-cn.github.io/react/downloads.html**
+
 Após instalar Node, é preciso instalar o npm, para isso rode:
 ```sh
 npm install
