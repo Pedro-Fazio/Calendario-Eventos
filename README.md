@@ -1,12 +1,12 @@
 # Calendário de Eventos
 
 ## Informações básicas do projeto
-- O projeto todo foi desenvolvido com auxílio do framework React e Javascript/HTML/CSS.
+- O projeto todo foi desenvolvido com auxílio do framework React e Javascript/HTML/CSS
 - O editor escolhido para desenvolve-lo é o Visual Studio Code
 - Conta com um Backend local (json server)
 
 ## Descrição
-Esse projeto é uma solução com Frontend e Backend para o registro de eventos em um calendário, também possuindo funcionalidades de login para o usuário.
+Esse projeto é uma solução com Frontend e Backend para o registro de eventos em um calendário, também possuindo funcionalidades de login para o usuário
 
 **Na parte do login de usuários, temos as funcionalidades:**
 - [Login]
